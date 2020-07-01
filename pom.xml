@@ -4,10 +4,21 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>com.jobtbao.framework</groupId>
-        <artifactId>jobtbao-framework-spring-cloud</artifactId>
-        <version>1.0.0</version>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.0.3.RELEASE</version>
     </parent>
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>Finchley.RELEASE</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 
     <groupId>com.jobtbao.es</groupId>
     <artifactId>jobonline-es</artifactId>
@@ -15,7 +26,6 @@
     <packaging>pom</packaging>
 
     <modules>
-        <module>jobonline-es-api</module>
         <module>jobonline-es-srv</module>
     </modules>
 

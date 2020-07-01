@@ -15,21 +15,7 @@
     <name>jobonline-es-api</name>
     <version>1.0.0-SNAPSHOT</version>
     <dependencies>
-        <!-- ==================== self ==================== -->
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-openfeign</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
-        </dependency>
 
-        <!-- ==================== framework ==================== -->
-        <dependency>
-            <groupId>com.jobtbao.framework</groupId>
-            <artifactId>jobtbao-framework-common-utils</artifactId>
-        </dependency>
     </dependencies>
     <build>
         <plugins>
