@@ -22,46 +22,14 @@
     <properties>
         <!-- maven -->
         <start-class>com.jobtbao.JobtbaoOauthApplication</start-class>
-        <!-- self -->
-        <jobtbao.oauth.api.version>1.0.0-SNAPSHOT</jobtbao.oauth.api.version>
-        <jobtbao.oauth.srv.version>1.0.0-SNAPSHOT</jobtbao.oauth.srv.version>
         <!-- others -->
         <!-- doc help -->
         <wrdoclet.buildid>time</wrdoclet.buildid>
         <java.version>1.8</java.version>
 
-        <okhttp.version>3.14.4</okhttp.version>
     </properties>
 
-    <dependencyManagement>
-        <dependencies>
-            <dependency>
-                <groupId>com.jobtbao.framework</groupId>
-                <artifactId>jobtbao-framework-parent</artifactId>
-                <version>1.0.0-SNAPSHOT</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
 
-            <!-- ==================== self ==================== -->
-            <dependency>
-                <groupId>com.jobtbao.oauth</groupId>
-                <artifactId>jobtbao-oauth-api</artifactId>
-                <version>${jobtbao.oauth.api.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.jobtbao.oauth</groupId>
-                <artifactId>jobtbao-oauth-srv</artifactId>
-                <version>${jobtbao.oauth.srv.version}</version>
-            </dependency>
-
-            <dependency>
-                <groupId>com.squareup.okhttp3</groupId>
-                <artifactId>okhttp</artifactId>
-                <version>${okhttp.version}</version>
-            </dependency>
-        </dependencies>
-    </dependencyManagement>
 
     <build>
         <plugins>

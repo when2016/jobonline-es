@@ -16,25 +16,23 @@
     <version>1.0.0-SNAPSHOT</version>
     <properties>
         <start-class>com.jobtbao.JobtbaoOauthApplication</start-class>
+
+        <!--swagger-ui-->
+        <swagger.version>2.9.2</swagger.version>
+        <swagger.ui.version>1.8.5</swagger.ui.version>
+        <swagger.annotations.version>1.5.21</swagger.annotations.version>
+        <swagger.models.version>1.5.21</swagger.models.version>
+
     </properties>
 
     <dependencies>
 
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-aop</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
+            <version>2.0.3.RELEASE</version>
         </dependency>
 
-        <!-- ==================== self ==================== -->
-        <dependency>
-            <groupId>com.alibaba</groupId>
-            <artifactId>fastjson</artifactId>
-        </dependency>
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
@@ -45,6 +43,7 @@
         <dependency>
             <groupId>io.springfox</groupId>
             <artifactId>springfox-swagger2</artifactId>
+            <version>${swagger.version}</version>
             <exclusions>
                 <exclusion>
                     <groupId>io.swagger</groupId>
@@ -59,38 +58,19 @@
         <dependency>
             <groupId>com.github.xiaoymin</groupId>
             <artifactId>swagger-bootstrap-ui</artifactId>
+            <version>${swagger.ui.version}</version>
         </dependency>
         <dependency>
             <groupId>io.swagger</groupId>
             <artifactId>swagger-annotations</artifactId>
+            <version>${swagger.annotations.version}</version>
         </dependency>
         <dependency>
             <groupId>io.swagger</groupId>
             <artifactId>swagger-models</artifactId>
+            <version>${swagger.models.version}</version>
         </dependency>
 
-        <dependency>
-            <groupId>tk.mybatis</groupId>
-            <artifactId>mapper</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.github.pagehelper</groupId>
-            <artifactId>pagehelper</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.google.guava</groupId>
-            <artifactId>guava</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-openfeign</artifactId>
-        </dependency>
-
-        <!--mapstruct-->
-        <dependency>
-            <groupId>org.mapstruct</groupId>
-            <artifactId>mapstruct-jdk8</artifactId>
-        </dependency>
 
         <!-- spring-cloud-alicloud-ans -->
         <dependency>
@@ -98,10 +78,8 @@
             <artifactId>spring-cloud-alicloud-ans</artifactId>
             <version>2.2.0.RELEASE</version>
         </dependency>
-        <dependency>
-            <groupId>com.squareup.okhttp3</groupId>
-            <artifactId>okhttp</artifactId>
-        </dependency>
+
+
 
     </dependencies>
 
