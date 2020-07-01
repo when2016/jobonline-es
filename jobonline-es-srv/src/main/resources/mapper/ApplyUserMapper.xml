@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jobtbao.oauth.srv.applyuser.dao.ApplyUserDao">
+
+    <insert id="save" parameterType="com.jobtbao.oauth.srv.applyuser.bean.ApplyUser">
+        INSERT INTO apply_user(`id`, `phone`,head_pic,create_time,update_time,deleted
+          <if test="type != null">
+                ,`type`
+            </if>
+        )
+        VALUES (
+          #{id},#{phone},#{headPic},#{createTime},#{updateTime},#{deleted}
+            <if test="type != null">
+                ,`type` = #{type}
+            </if>
+        )
+    </insert>
+
+    <select id="selectByPhone" parameterType="string" resultType="com.jobtbao.oauth.srv.applyuser.bean.ApplyUser">
+        select  `id`, `phone`, `passwod`, `nickname`, `name`, `sex`, `birthday`, head_pic, edu_school, edu_professional, card_pic, card_number, job_intent, email,create_time, update_time, deleted, version, auth_status, level
+        from apply_user where phone = #{phone} and deleted=1
+    </select>
+    <select id="selectByCardNumber" parameterType="string" resultType="com.jobtbao.oauth.srv.applyuser.bean.ApplyUser">
+        select  `id`, `phone`, `passwod`, `nickname`, `name`, `sex`, `birthday`, head_pic, edu_school, edu_professional, card_pic, card_number, job_intent, email,create_time, update_time, deleted, version, auth_status, level,enable,enable_reason as enableReason
+        from apply_user where card_number = #{cardNumber} and deleted=1
+    </select>
+    <select id="selectById" parameterType="long" resultType="com.jobtbao.oauth.srv.applyuser.bean.ApplyUser">
+        select  `id`, `phone`, `passwod`, `nickname`, `name`, `sex`, `sign_date`,`sign_no`,`birthday`, head_pic, edu_school, edu_professional,card_pic, card_number, job_intent, email, create_time, update_time, deleted, version,auth_status, level,enable,enable_reason as enableReason
+        from apply_user where id = #{Id}
+    </select>
+    <select id="selectPage" parameterType="map" resultType="map">
+        select  `id`, `phone`, `passwod`, `nickname`, `name`, `sex`, `birthday`, head_pic, edu_school, edu_professional, card_pic, card_number, job_intent, email, create_time, update_time, deleted, version
+        from apply_user where id in
+        <if test="ids != null">
+            <foreach collection="ids" index="index" item="item" open="(" separator="," close=")">
+                #{item}
+            </foreach>
+        </if>
+    </select>
+
+    <update id="update" parameterType="com.jobtbao.oauth.srv.applyuser.bean.ApplyUser">
+        update apply_user
+        <set>
+            <if test="phone != null">
+                phone = #{phone},
+            </if>
+            <if test="passwod != null">
+                passwod = #{passwod},
+            </if>
+            <if test="nickname != null">
+                nickname = #{nickname},
+            </if>
+            <if test="name != null">
+                `name` = #{name},
+            </if>
+            <if test="sex != null">
+                sex = #{sex},
+            </if>
+            <if test="birthday != null">
+                birthday = #{birthday},
+            </if>
+            <if test="headPic != null">
+                head_pic = #{headPic},
+            </if>
+            <if test="eduSchool != null">
+                edu_school = #{eduSchool},
+            </if>
+            <if test="signNo != null">
+                sign_no = #{signNo},
+            </if>
+            <if test="signDate != null">
+                sign_date = #{signDate},
+            </if>
+            <if test="eduProfessional != null">
+                edu_professional = #{eduProfessional},
+            </if>
+            <if test="cardPic != null">
+                card_pic = #{cardPic},
+            </if>
+            <if test="cardNumber != null">
+                card_number = #{cardNumber},
+            </if>
+            <if test="jobIntent != null">
+                job_intent = #{jobIntent},
+            </if>
+            <if test="email != null">
+                email = #{email},
+            </if>
+            <if test="updateTime != null">
+                update_time = #{updateTime,jdbcType=INTEGER},
+            </if>
+            <if test="authStatus != null">
+                auth_status = #{authStatus,jdbcType=INTEGER},
+            </if>
+            <if test="level != null">
+                level = #{level,jdbcType=INTEGER},
+            </if>
+        </set>
+        where `id` = #{id}
+    </update>
+
+    <insert id="saveEssCard" parameterType="com.jobtbao.oauth.srv.applyuser.bean.ApplyUser">
+        INSERT INTO apply_user(`id`, `phone`,head_pic,create_time,update_time,deleted,`name`,`insurance_no`,`card_number`,nickname,`birthday`,`sex`,`auth_status`,`level`
+         <if test="type != null">
+                ,`type`
+            </if>)
+        VALUES (
+          #{id},#{phone},#{headPic},#{createTime},#{updateTime},#{deleted},#{name},#{insuranceNo},#{cardNumber},#{nickname},#{birthday},#{sex},#{authStatus},#{level}
+          <if test="type != null">
+                ,#{type}
+            </if>
+        )
+    </insert>
+    <select id="selectByInsuranceNo" parameterType="string" resultType="com.jobtbao.oauth.srv.applyuser.bean.ApplyUser">
+        select  `id`, `phone`, `passwod`, `nickname`, `name`, `sex`, `sign_date`,`sign_no`,`birthday`, head_pic, edu_school, edu_professional,card_pic, card_number, job_intent, email, create_time, update_time, deleted, version,auth_status, level, enable,enable_reason as enableReason
+        from apply_user where insurance_no = #{insuranceNo}
+    </select>
+</mapper>

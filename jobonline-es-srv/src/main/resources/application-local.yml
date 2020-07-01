@@ -1,0 +1,6 @@
+spring:
+  cloud:
+    alicloud:
+      ans:
+        server-list: localhost
+        server-port: 8080

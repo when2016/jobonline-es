@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.jobtbao.oauth.srv.qrcode.dao.EcardSignRecordDao">
+
+	<select id="get" resultType="com.jobtbao.oauth.srv.qrcode.bean.EcardSignRecordDO">
+		select `id`,`aaz571`,`busiSeq`,`timestamp`,`signNo`,`signLevel`,`aac003`,`token`,`actionType`,`aab301`,`aac002`,`signDate`,`validDate`,`qrcodePay` from ecard_sign_record where id = #{value}
+	</select>
+
+	<select id="list" resultType="com.jobtbao.oauth.srv.qrcode.bean.EcardSignRecordDO">
+		select `id`,`aaz571`,`busiSeq`,`timestamp`,`signNo`,`signLevel`,`aac003`,`token`,`actionType`,`aab301`,`aac002`,`signDate`,`validDate`,`qrcodePay` from ecard_sign_record
+        <where>  
+		  		  <if test="id != null and id != ''"> and id = #{id} </if>
+		  		  <if test="aaz571 != null and aaz571 != ''"> and aaz571 = #{aaz571} </if>
+		  		  <if test="busiseq != null and busiseq != ''"> and busiSeq = #{busiseq} </if>
+		  		  <if test="timestamp != null and timestamp != ''"> and timestamp = #{timestamp} </if>
+		  		  <if test="signno != null and signno != ''"> and signNo = #{signno} </if>
+		  		  <if test="signlevel != null and signlevel != ''"> and signLevel = #{signlevel} </if>
+		  		  <if test="aac003 != null and aac003 != ''"> and aac003 = #{aac003} </if>
+		  		  <if test="token != null and token != ''"> and token = #{token} </if>
+		  		  <if test="actiontype != null and actiontype != ''"> and actionType = #{actiontype} </if>
+		  		  <if test="aab301 != null and aab301 != ''"> and aab301 = #{aab301} </if>
+		  		  <if test="aac002 != null and aac002 != ''"> and aac002 = #{aac002} </if>
+		  		  <if test="signdate != null and signdate != ''"> and signDate = #{signdate} </if>
+		  		  <if test="validdate != null and validdate != ''"> and validDate = #{validdate} </if>
+		  		  <if test="qrcodepay != null and qrcodepay != ''"> and qrcodePay = #{qrcodepay} </if>
+		  		</where>
+        <choose>
+            <when test="sort != null and sort.trim() != ''">
+                order by ${sort} ${order}
+            </when>
+			<otherwise>
+                order by id desc
+			</otherwise>
+        </choose>
+		<if test="offset != null and limit != null">
+			limit #{offset}, #{limit}
+		</if>
+	</select>
+	
+ 	<select id="count" resultType="int">
+		select count(*) from ecard_sign_record
+		 <where>  
+		  		  <if test="id != null and id != ''"> and id = #{id} </if>
+		  		  <if test="aaz571 != null and aaz571 != ''"> and aaz571 = #{aaz571} </if>
+		  		  <if test="busiseq != null and busiseq != ''"> and busiSeq = #{busiseq} </if>
+		  		  <if test="timestamp != null and timestamp != ''"> and timestamp = #{timestamp} </if>
+		  		  <if test="signno != null and signno != ''"> and signNo = #{signno} </if>
+		  		  <if test="signlevel != null and signlevel != ''"> and signLevel = #{signlevel} </if>
+		  		  <if test="aac003 != null and aac003 != ''"> and aac003 = #{aac003} </if>
+		  		  <if test="token != null and token != ''"> and token = #{token} </if>
+		  		  <if test="actiontype != null and actiontype != ''"> and actionType = #{actiontype} </if>
+		  		  <if test="aab301 != null and aab301 != ''"> and aab301 = #{aab301} </if>
+		  		  <if test="aac002 != null and aac002 != ''"> and aac002 = #{aac002} </if>
+		  		  <if test="signdate != null and signdate != ''"> and signDate = #{signdate} </if>
+		  		  <if test="validdate != null and validdate != ''"> and validDate = #{validdate} </if>
+		  		  <if test="qrcodepay != null and qrcodepay != ''"> and qrcodePay = #{qrcodepay} </if>
+		  		</where>
+	</select>
+	 
+	<insert id="save" parameterType="com.jobtbao.oauth.srv.qrcode.bean.EcardSignRecordDO" useGeneratedKeys="true" keyProperty="id">
+		insert into ecard_sign_record
+		(
+			`id`,
+			`uid`, 
+			`type`, 
+			`aaz571`, 
+			`busiSeq`, 
+			`timestamp`, 
+			`signNo`, 
+			`signLevel`, 
+			`aac003`, 
+			`token`, 
+			`actionType`, 
+			`aab301`, 
+			`aac002`, 
+			`signDate`, 
+			`validDate`, 
+			`qrcodePay`, 
+			`create_time`
+		)
+		values
+		(
+			#{id},
+			#{uid}, 
+			#{type}, 
+			#{aaz571}, 
+			#{busiseq}, 
+			#{timestamp}, 
+			#{signno}, 
+			#{signlevel}, 
+			#{aac003}, 
+			#{token}, 
+			#{actiontype}, 
+			#{aab301}, 
+			#{aac002}, 
+			#{signdate}, 
+			#{validdate}, 
+			#{qrcodepay}, 
+			#{createTime}
+		)
+	</insert>
+	 
+	<update id="update" parameterType="com.jobtbao.oauth.srv.qrcode.bean.EcardSignRecordDO">
+		update ecard_sign_record 
+		<set>
+			<if test="aaz571 != null">`aaz571` = #{aaz571}, </if>
+			<if test="busiseq != null">`busiSeq` = #{busiseq}, </if>
+			<if test="timestamp != null">`timestamp` = #{timestamp}, </if>
+			<if test="signno != null">`signNo` = #{signno}, </if>
+			<if test="signlevel != null">`signLevel` = #{signlevel}, </if>
+			<if test="aac003 != null">`aac003` = #{aac003}, </if>
+			<if test="token != null">`token` = #{token}, </if>
+			<if test="actiontype != null">`actionType` = #{actiontype}, </if>
+			<if test="aab301 != null">`aab301` = #{aab301}, </if>
+			<if test="aac002 != null">`aac002` = #{aac002}, </if>
+			<if test="signdate != null">`signDate` = #{signdate}, </if>
+			<if test="validdate != null">`validDate` = #{validdate}, </if>
+			<if test="qrcodepay != null">`qrcodePay` = #{qrcodepay}</if>
+		</set>
+		where id = #{id}
+	</update>
+	
+	<delete id="remove">
+		delete from ecard_sign_record where id = #{value}
+	</delete>
+	
+	<delete id="batchRemove">
+		delete from ecard_sign_record where id in 
+		<foreach item="id" collection="array" open="(" separator="," close=")">
+			#{id}
+		</foreach>
+	</delete>
+
+</mapper>
